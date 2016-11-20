@@ -1,3 +1,9 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 /**
  *
  * @author Chamara Munasinghe
@@ -21,6 +27,8 @@ public class AlmostSorted {
        Arrays.sort(temp);
        //if array is already sorted
        boolean initialySorted = isSorted(arr);
+       //System.out.println("boolean : "+initialySorted);
+       //System.out.println("Here : "+ Arrays.equals(arr, temp));
        //if array is already sorted.
        if(initialySorted){
            System.out.println("yes");
@@ -30,7 +38,7 @@ public class AlmostSorted {
            //find index where array is made unsorted array in first place
            int idx1 = unsortedIndex(arr,temp,0);
            int idx2 = unsortedIndex(arr,temp,idx1+1);
-           
+           //System.out.printf("idx1 : %d --- idx2 : %d\n",idx1,idx2);
            boolean flag = swapOperation(arr, temp, idx1, idx2);
            if(flag){
                System.out.printf("yes\nswap %d %d",idx1+1,idx2+1);
@@ -59,7 +67,9 @@ public class AlmostSorted {
         
         //find index where arr is made unsorted from the start.
         swap(arr,idx1,idx2);
+        //for(int i : arr)System.out.print(i+" ");
         boolean test = Arrays.equals(arr,temp);
+        //System.out.println("bol test : "+ test);
         return test;
     }
     static boolean reverseOperation(int [] arr,int[] temp,int idx1,int idx2){
@@ -70,6 +80,10 @@ public class AlmostSorted {
             i++;
             j--;
         }
+        for(int k : arr){
+            System.out.print(k+" ");
+        }
+        System.out.println();
         boolean test = Arrays.equals(arr,temp);
         
         return test;
@@ -97,3 +111,7 @@ public class AlmostSorted {
         return idx;
     }
 }
+            
+        
+    
+
