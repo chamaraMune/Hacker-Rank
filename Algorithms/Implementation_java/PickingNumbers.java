@@ -13,18 +13,33 @@ public class PickingNumbers {
         }
         
         int answer = processAnswer(inputArray);
+        System.out.println(answer);
     }
 
     private static int processAnswer(int[] input) {
         int answer = 0;
-        Arrays.sort(input);
-        printArray(input);
+        
+        if (input.length == 2) {
+            return (Math.abs(input[0] - input[1]) <= 1) ? 2 : 0;
+        } else {
+            Arrays.sort(input);
+            int comparitor = input[0];
+            int counter = 0;
+            
+            for (int idx = 0; idx < input.length; idx++) {
+                int placeValue = input[idx];
+                if (Math.abs(comparitor - placeValue) <= 1) {
+                    counter++;
+                } else {
+                    comparitor = placeValue;
+                    counter = 1;
+                }
+                
+                if (counter > answer) {
+                    answer = counter;
+                }
+            }      
+        } 
         return answer;
     }
-    
-    private static void printArray(int[] input) {
-        for(int element : input) {
-            System.out.print(element + " ");
-        }
-    } 
 } 
